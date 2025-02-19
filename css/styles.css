@@ -295,7 +295,7 @@ p, ul, li, span {
 .parallax-header {
     position: relative;
     height: 100vh;
-    background-image: url('/images/code.png');
+    background-image: url('images/code.png');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;

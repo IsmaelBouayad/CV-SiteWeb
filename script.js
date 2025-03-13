@@ -101,43 +101,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 
-
-//--------> Affichage de projets de manière interactive <----------
-
-// Récupérer tous les projets
-const projects = document.querySelectorAll('.project');
-
-// Variables pour suivre l'index du projet actuel
-let currentIndex = 0;
-
-// Fonction pour afficher le projet actuel et cacher les autres
-function showProject(index) {
-    projects.forEach(project => {
-        project.classList.remove('active');  
-    });
-    // Ajouter la classe 'active' au projet actuel
-    projects[index].classList.add('active');
-}
-
-// Initialiser l'affichage avec le premier projet
-showProject(currentIndex);
-
-// Boutons de navigation
-const prevButton = document.getElementById('prev-button');
-const nextButton = document.getElementById('next-button');
-
-// Ajouter un écouteur d'événements pour le bouton "précédent"
-prevButton.addEventListener('click', () => {
-    currentIndex = (currentIndex === 0) ? projects.length - 1 : currentIndex - 1;
-    showProject(currentIndex);
-});
-
-// Ajouter un écouteur d'événements pour le bouton "suivant"
-nextButton.addEventListener('click', () => {
-    currentIndex = (currentIndex === projects.length - 1) ? 0 : currentIndex + 1;
-    showProject(currentIndex);
-});
-
 /* affichage interactive et progressive de sections*/
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -198,44 +161,37 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Message de bienvenue en fonction de l'heure
-    const welcomeMessageElement = document.getElementById("welcome-message");
-    const currentHour = new Date().getHours();
-    let message;
-    if (currentHour >= 5 && currentHour < 12) {
-        message = "Bonjour ! Bienvenue sur mon CV en ligne !";
-    } else if (currentHour >= 12 && currentHour < 18) {
-        message = "Bonne après-midi ! Explorez mon parcours.";
-    } else {
-        message = "Bonne soirée ! Découvrez mes expériences.";
-    }
-    welcomeMessageElement.textContent = message;
-    welcomeMessageElement.style.textAlign = "center";
-    welcomeMessageElement.style.color = "azure";
-    welcomeMessageElement.style.marginTop = "10px";
+
 
    
-
-    // Affichage interactif des projets
+    // carrousel de projets
+    const carouselInner = document.querySelector('.carousel-inner');
     const projects = document.querySelectorAll('.project');
     let currentIndex = 0;
+
     function showProject(index) {
-        projects.forEach(project => {
-            project.classList.remove('active');
-        });
-        projects[index].classList.add('active');
+        const offset = -index * 100; // Chaque projet = 100% de largeur
+        carouselInner.style.transform = `translateX(${offset}%)`;
     }
+
+    // Afficher le premier projet au chargement
     showProject(currentIndex);
+
+    // Boutons de navigation
     const prevButton = document.getElementById('prev-button');
     const nextButton = document.getElementById('next-button');
+
     prevButton.addEventListener('click', () => {
         currentIndex = (currentIndex === 0) ? projects.length - 1 : currentIndex - 1;
         showProject(currentIndex);
     });
+
     nextButton.addEventListener('click', () => {
         currentIndex = (currentIndex === projects.length - 1) ? 0 : currentIndex + 1;
         showProject(currentIndex);
     });
+
+
 
     // Affichage progressif des sections
     const sections = document.querySelectorAll(".reveal");

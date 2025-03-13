@@ -170,26 +170,32 @@ p, ul, li, span {
     }
 }
 
+/* Conteneur principal du carrousel */
+.carousel {
+    width: 100%;
+    overflow: hidden; /* Masque les projets hors de la vue */
+}
+
+/* Bande contenant les projets */
+.carousel-inner {
+    display: flex; /* Alignement horizontal */
+    transition: transform 0.5s ease; /* Animation fluide */
+}
+
+/* Style des projets */
 .project {
-    opacity: 0.3;
-    visibility: visible;
-    transform: translateX(100px);
-    transition: opacity 0.5s ease, transform 0.5s ease, visibility 0s 0.5s;
+    flex: 0 0 100%; /* Chaque projet prend 100% de la largeur du conteneur */
     background-color: #1B263B;
     color: #FFFFFF;
-    margin: 10px 0;
+    margin: 10px;
     padding: 10px;
     border-radius: 10px;
     box-shadow: none;
 }
 
-.project.active {
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(0);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-}
+/* Plus besoin de .project.active ni d'opacité, car le défilement gère la visibilité */
 
+/* Boutons de navigation */
 .nav-button {
     background-color: #F4A261;
     color: #FFFFFF;
@@ -205,6 +211,7 @@ p, ul, li, span {
     background-color: #00A896;
 }
 
+/* Bouton "Code" */
 .button-code {
     font-size: large;
     color: #FFFFFF;
@@ -221,6 +228,12 @@ p, ul, li, span {
 .button-code:hover {
     background-color: #00A896;
 }
+
+
+
+
+
+
 
 #backToTop {
     position: fixed;
